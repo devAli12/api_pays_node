@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Pays with Drapeau</title>
+    <style>
+        /* Style for the container div */
+        .country-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px; /* Adjust as needed */
+        }
+
+        h1{
+            color: #333333;
+            text-align: center;
+        }
+    
+        body{
+            width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Style for the image */
+        .country-flag {
+            width: 60px;
+            height: auto; /* To maintain aspect ratio */
+            margin-right: 10px; /* Adjust as needed */
+        }
+
+        /* Style for the text */
+        .country-text {
+            margin: 0; /* Reset margin */
+        }
+
+        .styled-div {
+    width: 300px;
+    height: 200px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adjust values for desired shadow */
+    padding: 20px;
+    margin: 50px auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: grey;
+  }
+    </style>
+</head>
+<body>
+    <h1>List of Pays with Drapeau</h1>
+    <div>
+        <% pays.forEach(function(pay) { %>
+            <div class="country-container styled-div"> 
+                <h2><%= pay.name.common %></h2>
+                <img src="<%=pay.flags.png%>" class="country-flag" width="60px" height="100%"></img>
+                <p ><a href="http://localhost:4000/pays/<%=pay.name.common%>"><%= pay.name.official%></a></p>
+            </div>
+        <% }); %>
+    </div>
+</body>
+</html>

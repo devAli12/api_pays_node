@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+            width: 700px;
+            margin: 0 auto;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        h2 {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #007bff;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        img {
+            max-width: 50%;
+            height: auto;
+            display: block;
+            margin: 10px auto;
+            border-radius: 4px;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body >
+    <h1>Country Information: <%= data.name.common %></h1>
+
+    <h2>Basic Information</h2>
+    <ul>
+        <li>Official Name: <%= data.name.official %></li>
+        <li>Capital: <%= data.capital[0] %></li>
+        <li>Region: <%= data.region %></li>
+        <li>Subregion: <%= data.subregion %></li>
+        <li>Population: <%= data.population %></li>
+    </ul>
+
+    <h2>Languages</h2>
+    <ul>
+        <% for (let lang in data.languages) { %>
+            <li><%= data.languages[lang] %></li>
+        <% } %>
+    </ul>
+
+    <h2>Currencies</h2>
+    <ul>
+        <% for (let currency in data.currencies) { %>
+            <li><%= data.currencies[currency].name %> (<%= data.currencies[currency].symbol %>)</li>
+        <% } %>
+    </ul>
+
+    <h2>Translations</h2>
+    <ul>
+        <% for (let lang in data.translations) { %>
+            <li><%= data.translations[lang].common %> - <%= data.translations[lang].official %></li>
+        <% } %>
+    </ul>
+
+    <h2>Flag</h2>
+    <img src="<%= data.flags.svg %>" alt="Flag of <%= data.name.common %>">
+
+    <h2>Maps</h2>
+    <ul>
+        <li><a href="<%= data.maps.googleMaps %>">Google Maps</a></li>
+        <li><a href="<%= data.maps.openStreetMaps %>">OpenStreetMaps</a></li>
+    </ul>
+
+    <h2>Timezones</h2>
+    <ul>
+        <% for (let tz of data.timezones) { %>
+            <li><%= tz %></li>
+        <% } %>
+    </ul>
+</body>
+</html>
